@@ -1,0 +1,16 @@
+{
+    "appId": "com.brad.monitoringApp",
+    "files": ["dist-electron/**/*.*", "dist-react"],
+    "icon": "./desktop-icon.png",
+
+    "mac": {
+        "target": "dmg"
+    },
+    "linux": {
+        "target": "AppImage",
+        "category": "Utility"
+    },
+    "win": {
+        "target": "msi"
+    }
+}
