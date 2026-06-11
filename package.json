@@ -3,15 +3,18 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
-    "main": "dist-electron/main",
+    "main": "dist-electron/main.js",
     "scripts": {
         "dev:react": "vite",
-        "dev:electron": "electron . --enable-features=UseOzonePlatform --ozone-platform=x11 ",
+        "dev:electron": "export NODE_ENV=development && electron . --enable-features=UseOzonePlatform --ozone-platform=x11 ",
         "build": "tsc -b && vite build",
         "transpile:electron": "tsc --project src/electron/tsconfig.electron.json",
         "lint": "eslint .",
         "preview": "vite preview",
-        "prepare": "husky"
+        "prepare": "husky",
+        "dist:mac": "npm run transpile:electron && npm run build && electron-builder --mac --arm64",
+        "dist:win": "npm run transpile:electron && npm run build && electron-builder --win --x64",
+        "dist:linux": "npm run transpile:electron && npm run build && electron-builder --linux --x64"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx,json,css,md,mdx,yml,yaml}": [
@@ -32,12 +35,14 @@
         "@types/react-dom": "^19.2.3",
         "@vitejs/plugin-react": "^6.0.1",
         "electron": "^42.4.0",
+        "electron-builder": "^26.15.2",
         "eslint": "^10.4.1",
         "eslint-plugin-react-hooks": "^7.1.1",
         "eslint-plugin-react-refresh": "^0.5.2",
         "globals": "^17.6.0",
         "husky": "^9.1.7",
         "lint-staged": "^16.4.0",
+        "npm-run-all": "^4.1.5",
         "prettier": "^3.8.4",
         "typescript": "~6.0.2",
         "typescript-eslint": "^8.59.2",
