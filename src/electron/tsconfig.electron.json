@@ -13,5 +13,5 @@
         "noUnusedParameters": true,
         "noImplicitAny": true,
         "strict": true
-    },
+    }
 }
