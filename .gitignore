@@ -1,5 +1,5 @@
 ./dist-react/
-
+./dist-electron/
 
 # Logs
 logs
